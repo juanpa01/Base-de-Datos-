@@ -1,0 +1,59 @@
+<% include header %>
+<body background-color = 'teal'>
+<% include nav_bar_root %>
+  <div class="container">
+    <table class="bordered centered highlight responsive-table">
+      <thead class="center s6">
+        <tr>
+            <th data-field="id">Identificacion</th>
+            <th data-field="name">Nombre</th>
+            <th data-field="price">Apellido</th>
+            <th data-field="price">Direccion</th>
+            <th data-field="price">Fecha de nacimiento</th>
+            <th data-field="price">Tipo</th>
+        </tr>
+      </thead>
+
+      <tbody class="center">
+
+        <% person.forEach(function(person){ %>
+          <tr>
+            <td><%= person.id_persona %></td>
+            <td><%= person.nombre_persona %></td>
+            <td><%= person.apellido_persona %></td>
+            <td><%= person.direccion_persona %></td>
+            <td><%= person.fecha_nacimiento %></td>
+            <td><%= person.tipo_persona %></td>
+          </tr>
+        <tr>
+        <% }) %>
+
+      </tbody>
+
+    </table>
+    </div>
+    <form action="/update_person" method="post">
+      <center>
+        <div class="row">
+          <div class="input-field col s6">
+            <input value="" id="first_name2" type="text" class="validate" name="id" >
+            <label class="active" for="first_name2">Numero de identificaccionde</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input value="" id="first_name2" type="text" class="validate" name="columna" >
+          <label class="active" for="first_name2">Nombre de la columna (ejm: Nombre, Apellido..)</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input value="" id="first_name2" type="text" class="validate" name="inf" >
+        <label class="active" for="first_name2">Nueva informacion</label>
+      </div>
+    </div>
+  </center>
+   <input type = "submit" class="btn btn-primary btn-large btn-block " href= "/update_person"value="Actualizar">
+  </form>
+
+</body>

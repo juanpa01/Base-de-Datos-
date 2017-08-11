@@ -1,0 +1,155 @@
+<% include header %>
+
+<body background-color = 'teal'>
+  <% include nav_bar_root %>
+    <form action="/register_mult" method="post"><div class="login">
+        <h4>Informacion de la persona </h4>
+        <label>¿La persona ya se le ha impuesto una o mas multa(s)?...(si es asi, solo digita numero de identificacion) </label>
+        <div class="row"class="container">
+          <div class="input-field col s6" >
+            <select  name="person">
+              <option value="" disabled selected="">Selecciona una opcion</option>
+              <option value="si"name="tipo1">Si</option>
+              <option value="no"name="tipo2">No</option>
+            </select>
+          </div>
+        </div>
+
+        <center>
+          <div class="row">
+            <div class="input-field col s6" >
+              <input value="" id="first_name2" type="text" class="validate" name="id" >
+              <label class="active" for="first_name2">Numero de Identificacion</label>
+          </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="name" >
+              <label class="active" for="first_name2">Nombre </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="last_name">
+              <label class="active" for="first_name2">Apellido </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="dir">
+              <label class="active" for="first_name2">Direccion </label>
+            </div>
+          </div>
+        </center>
+
+        <label>Fecha de nacimiento</label>
+        <div class="row"class="container">
+          <div class="input-field col s6" >
+            <input type="date" name="date_person">
+          </div>
+        </div>
+
+        <label>Tipo de persona : </label>
+        <div class="row"class="container">
+          <div class="input-field col s6" >
+            <select name="tipo">
+              <option value="" disabled selected="">Selecciona una opcion</option>
+              <option value="conductor"name="tipo1">Conductor</option>
+              <option value="peaton"name="tipo2">Peaton</option>
+              <option value="ocupante"name="tipo3">Ocupante</option>
+            </select>
+          </div>
+        </div>
+
+        <h4>Informacion del vehiculo </h4>
+        <label>¿Un carro se vio implicado en la multa? : </label>
+        <div class="row"class="container">
+          <div class="input-field col s6" >
+            <select  name="vehiculo">
+              <option value="" disabled selected="">Selecciona una opcion</option>
+              <option value="si"name="tipo1">Si</option>
+              <option value="no"name="tipo2">No</option>
+            </select>
+          </div>
+        </div>
+
+        <center>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="matricula">
+              <label class="active" for="first_name2">Matricula del vehiculo </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="modelo">
+              <label class="active" for="first_name2">Modelo </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="marca">
+              <label class="active" for="first_name2">marca </label>
+            </div>
+          </div>
+        </center>
+        
+        <label>Fecha matricula</label>
+        <div class="row"class="container">
+          <div class="input-field col s6" >
+            <input type="date" name="date_vehi">
+          </div>
+        </div>
+        <h4>Informacion de la multa </h4>
+        <label>Fecha de la multa</label>
+        <div class="row"class="container">
+          <div class="input-field col s6" >
+            <input type="date" name="date_mult">
+          </div>
+        </div>
+        <center>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" placeholder="Valor en pesos" id="first_name2" type="text" class="validate" name="importe">
+              <label class="active" for="first_name2">Importe de la multa </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="articulo">
+              <label class="active" for="first_name2">Articulo sancionado</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="carretera">
+              <label class="active" for="first_name2">Nombre de la carretera donde se impuso la multa</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="km">
+              <label class="active" for="first_name2">Kilometro</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="dir_mult">
+              <label class="active" for="first_name2">Direccion dnde se impuso la multa</label>
+            </div>
+          </div>
+      </center>
+        <h4>Informacion del agente </h4>
+        <center>
+          <div class="row">
+            <div class="input-field col s6">
+              <input value="" id="first_name2" type="text" class="validate" name="id_agent">
+              <label class="active" for="first_name2">Identificacion del agente</label>
+            </div>
+          </div>
+      </center>
+        <input type = "submit" class="btn btn-primary btn-large btn-block " href= "/register_mult" value="Ingresar Multa">
+      </div>
+  </form>
+
+</body>
