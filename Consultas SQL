@@ -1,0 +1,76 @@
+CREATE DATABASE C_infracciones;
+
+USE C_infracciones;
+
+CREATE TABLE Agente(
+id_agente INTEGER NOT NULL,
+nombre_agente VARCHAR(30) NOT NULL,
+apellido_agente VARCHAR(30) NOT NULL,
+PRIMARY KEY (id_agente)
+);
+
+CREATE TABLE Persona(
+id_persona INTEGER NOT NULL,
+nombre_persona VARCHAR(30) NOT NULL,
+apellido_persona VARCHAR(30) NOT NULL,
+direccion_persona VARCHAR(50) NOT NULL,
+fecha_nacimiento DATE,
+tipo_persona VARCHAR (30) NOT NULL,
+PRIMARY KEY (id_persona)
+);
+
+CREATE TABLE Vehiculo(
+matricula_vehiculo INTEGER NOT NULL,
+modelo_vehiculo VARCHAR(30) NOT NULL,
+marca_vehiculo VARCHAR(30) NOT NULL,
+fecha_matricula DATE NOT NULL,
+id_propietario INTEGER,
+PRIMARY KEY (matricula),
+FOREIGN KEY (id_propietario) REFERENCES Persona(id_persona)ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Lugar_Infraccion(
+id_lugarInfraccion INTEGER AUTO_INCREMENT NOT NULL,
+carretera_lugarInfraccion VARCHAR(30) NOT NULL,
+kilometro_lugarInfraccion INTEGER NOT NULL,
+dir_lugarInfraccion VARCHAR(30) NOT NULL,
+PRIMARY KEY (id_lugarInfraccion)
+)AUTO_INCREMENT = 1;
+
+CREATE TABLE Multa(
+id_multa INTEGER NOT NULL AUTO_INCREMENT,
+fecha_multa DATE NOT NULL,
+importe_multa INTEGER NOT NULL,
+articulo_multa VARCHAR(30) NOT NULL,
+id_persona INTEGER,
+id_vehiculo INTEGER,
+id_lugarInfraccion INTEGER,
+id_agente INTEGER,
+PRIMARY KEY (id_multa),
+FOREIGN KEY (id_persona) REFERENCES Persona(id_persona)ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (id_vehiculo) REFERENCES Vehiculo(matricula_vehiculo)ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (id_lugarInfraccion) REFERENCES Lugar_Infraccion(id_lugarInfraccion)ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (id_agente) REFERENCES Agente(id_agente)ON DELETE CASCADE ON UPDATE CASCADE
+)AUTO_INCREMENT = 1;
+
+INSERT INTO Agente VALUES (1088345765,'Carlos','Serna');
+INSERT INTO Agente VALUES (1088345743,'Camilo','Valencia');
+INSERT INTO Agente VALUES (1088232165,'Oscar','Montoya');
+
+INSERT INTO Persona VALUES (1088311092,'Maria','Lopez','Manzana 1 Casa 3','1980/11/5','Propietario');
+INSERT INTO Persona VALUES (1000214092,'Mario','Henao','Manzana 7 Casa 3','1980/04/5','Peaton');
+INSERT INTO Persona VALUES (1011312486,'Camila','Salazar','Carrera 15 # 25-8','1996/12/24','Propietario');
+
+INSERT INTO Vehiculo VALUES (1234,'AVEO','Chevrolet','1999/11/5',1088311092);
+INSERT INTO Vehiculo VALUES (1256,'Fiesta','Ford','2005/10/15',1011312486);
+
+INSERT INTO Lugar_Infraccion (carretera_lugarInfraccion, kilometro_lugarInfraccion, dir_lugarInfraccion) VALUES ('Av Sur','4','Calle 50 Pereira');
+INSERT INTO Lugar_Infraccion (carretera_lugarInfraccion, kilometro_lugarInfraccion, dir_lugarInfraccion) VALUES ('Av 30 de Agosto','2','Calle 37 Pereira');
+INSERT INTO Lugar_Infraccion (carretera_lugarInfraccion, kilometro_lugarInfraccion, dir_lugarInfraccion) VALUES ('Av Ferrocarril','3','Calle 8 Dosquebradas');
+
+
+INSERT INTO Multa (fecha_multa, importe_multa, articulo_multa, id_persona, id_vehiculo, id_lugarInfraccion,id_agente)  VALUES ('2015/10/03',300000,'1090',1088311092,1234,1,1088345765);
+INSERT INTO Multa (fecha_multa, importe_multa, articulo_multa, id_persona, id_vehiculo, id_lugarInfraccion,id_agente)  VALUES ('2010/04/03',900000,'1022',1000214092,NULL,2,1088232165);
+INSERT INTO Multa (fecha_multa, importe_multa, articulo_multa, id_persona, id_vehiculo, id_lugarInfraccion,id_agente)  VALUES ('2015/12/03',150000,'1015',1088311092,1234,2,1088232165);
+INSERT INTO Multa (fecha_multa, importe_multa, articulo_multa, id_persona, id_vehiculo, id_lugarInfraccion,id_agente)  VALUES ('2015/10/03',300000,'1010',1088311092,1256,1,1088345765);
+INSERT INTO Multa (fecha_multa, importe_multa, articulo_multa, id_persona, id_vehiculo, id_lugarInfraccion,id_agente)  VALUES ('2015/10/03',100000,'1011',1000214092,1256,2,1088345765);

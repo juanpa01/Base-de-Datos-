@@ -1,0 +1,46 @@
+<% include header %>
+
+<body background-color = 'teal'>
+  <% include nav-bar %>
+  <center><h5> Multas a su nombre: </h5></center>
+  <div class="container">
+    <table class="bordered centered highlight responsive-table">
+        <thead class="center s6">
+          <tr>
+              <th data-field="id">Multa Cod</th>
+              <th data-field="name">Fecha</th>
+              <th data-field="price">Valor</th>
+              <th data-field="price">Art Sancionado</th>
+              <th data-field="price">Lugar Multa</th>
+              <th data-field="price">Cedula</th>
+              <th data-field="price">Nombre</th>
+              <th data-field="price">Apellido</th>
+              <th data-field="price">Cod Agente</th>
+              <th data-field="price">Nombre Agente</th>
+              <th data-field="price">Vehiculo</th>
+
+          </tr>
+        </thead>
+
+
+      <tbody class="center">
+        <% multa.forEach(function(mult){%>
+              <tr>
+                <td><%= mult.id_multa %></td>
+                <td><%= mult.fecha_multa %></td>
+                <td>$<%= mult.importe_multa %></td>
+                <td><%= mult.articulo_multa %></td>
+                <td><%= mult.carretera_lugarInfraccion %> Km <%= mult.kilometro_lugarInfraccion %> <%= mult.dir_lugarInfraccion %></td>
+                <td><%= mult.id_persona %></td>
+                <td><%= mult.nombre_persona %></td>
+                <td><%= mult.apellido_persona %></td>
+                <td><%= mult.id_agente %></td>
+                <td><%= mult.nombre_agente %>  <%= mult.apellido_agente %> </td>
+                <td><b>Matricula</b>:<%= matricula[a].result %> <br/> <b>Marca</b>:<%= marca[a].result %> <br/> <b>Modelo</b>:<%= modelo[a].result %> <br/></td>
+              </tr>
+              <% a++ %>
+            <% }) %>
+          </tbody>
+      </table>
+    </div>
+<% include footer %>
